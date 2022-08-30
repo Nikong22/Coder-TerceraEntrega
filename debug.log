@@ -1,0 +1,87 @@
+[2022-08-30T02:48:53.853] [INFO] produccion - Servidor HTTP escuando en el puerto 8080
+[2022-08-30T02:48:53.924] [DEBUG] produccion - Conectado a la base de datos mongo...
+[2022-08-30T02:50:19.256] [INFO] produccion - {
+  body: 'Has finalizado la compra. Tu lista de productos: \r\n' +
+    'Televisor 50´ 4k $93999 \r\n' +
+    'Microondas $25000 \r\n' +
+    'Heladera $85999 \r\n',
+  numSegments: '1',
+  direction: 'outbound-api',
+  from: 'whatsapp:+14155238886',
+  to: 'whatsapp:+5491134047670',
+  dateUpdated: 2022-08-30T05:50:24.000Z,
+  price: null,
+  errorMessage: null,
+  uri: '/2010-04-01/Accounts/AC14764d5cd5e57cf1354d44f8d9fd77d0/Messages/SM9d13d6ccb421aaf7fd2aa679df3f161c.json',
+  accountSid: 'AC14764d5cd5e57cf1354d44f8d9fd77d0',
+  numMedia: '0',
+  status: 'queued',
+  messagingServiceSid: null,
+  sid: 'SM9d13d6ccb421aaf7fd2aa679df3f161c',
+  dateSent: null,
+  dateCreated: 2022-08-30T05:50:24.000Z,
+  errorCode: null,
+  priceUnit: null,
+  apiVersion: '2010-04-01',
+  subresourceUris: {
+    media: '/2010-04-01/Accounts/AC14764d5cd5e57cf1354d44f8d9fd77d0/Messages/SM9d13d6ccb421aaf7fd2aa679df3f161c/Media.json'
+  }
+}
+[2022-08-30T02:50:20.131] [INFO] produccion - {
+  body: 'Sent from your Twilio trial account - Has finalizado la compra. Tu lista de productos: \r\n' +
+    'Televisor 50´ 4k $93999 \r\n' +
+    'Microondas $25000 \r\n' +
+    'Heladera $85999',
+  numSegments: '3',
+  direction: 'outbound-api',
+  from: '+19513570609',
+  to: '+541137839891',
+  dateUpdated: 2022-08-30T05:50:25.000Z,
+  price: null,
+  errorMessage: null,
+  uri: '/2010-04-01/Accounts/AC3b31e13c3b94f9ac09e61fea944c5e64/Messages/SMb6a67fa4f37e51852c0c60cd7dfbd3a7.json',
+  accountSid: 'AC3b31e13c3b94f9ac09e61fea944c5e64',
+  numMedia: '0',
+  status: 'queued',
+  messagingServiceSid: null,
+  sid: 'SMb6a67fa4f37e51852c0c60cd7dfbd3a7',
+  dateSent: null,
+  dateCreated: 2022-08-30T05:50:25.000Z,
+  errorCode: null,
+  priceUnit: 'USD',
+  apiVersion: '2010-04-01',
+  subresourceUris: {
+    media: '/2010-04-01/Accounts/AC3b31e13c3b94f9ac09e61fea944c5e64/Messages/SMb6a67fa4f37e51852c0c60cd7dfbd3a7/Media.json'
+  }
+}
+[2022-08-30T02:58:02.786] [INFO] produccion - Servidor HTTP escuando en el puerto 8080
+[2022-08-30T02:58:02.857] [DEBUG] produccion - Conectado a la base de datos mongo...
+[2022-08-30T02:58:25.549] [INFO] produccion - {
+  accepted: [ 'nico.alejandro20@gmail.com' ],
+  rejected: [],
+  envelopeTime: 1132,
+  messageTime: 795,
+  messageSize: 450,
+  response: '250 2.0.0 OK  1661839111 s1-20020a4ab541000000b004354a4412edsm6205069ooo.29 - gsmtp',
+  envelope: {
+    from: 'nico.alejandro20@gmail.com',
+    to: [ 'nico.alejandro20@gmail.com' ]
+  },
+  messageId: '<70a253a3-7577-7759-4928-ee0dbeebea9b@gmail.com>'
+}
+[2022-08-30T03:36:17.897] [DEBUG] produccion - Conectado a la base de datos mongo...
+[2022-08-30T15:46:50.292] [INFO] produccion - Servidor HTTP escuando en el puerto 8080
+[2022-08-30T15:46:50.486] [DEBUG] produccion - Conectado a la base de datos mongo...
+[2022-08-30T17:08:21.242] [INFO] produccion - Servidor HTTP escuando en el puerto 8080
+[2022-08-30T17:08:21.387] [DEBUG] produccion - Conectado a la base de datos mongo...
+[2022-08-30T17:16:55.020] [INFO] produccion - Servidor HTTP escuando en el puerto 8080
+[2022-08-30T17:16:55.117] [DEBUG] produccion - Conectado a la base de datos mongo...
+[2022-08-30T17:58:12.789] [DEBUG] produccion - Conectado a la base de datos mongo...
+[2022-08-30T17:58:15.669] [INFO] produccion - Servidor HTTP escuando en el puerto 8080
+[2022-08-30T17:58:15.701] [INFO] produccion - Servidor HTTP escuando en el puerto 8080
+[2022-08-30T17:58:15.811] [INFO] produccion - Servidor HTTP escuando en el puerto 8080
+[2022-08-30T17:58:15.866] [DEBUG] produccion - Conectado a la base de datos mongo...
+[2022-08-30T17:58:15.879] [DEBUG] produccion - Conectado a la base de datos mongo...
+[2022-08-30T17:58:15.896] [INFO] produccion - Servidor HTTP escuando en el puerto 8080
+[2022-08-30T17:58:15.940] [DEBUG] produccion - Conectado a la base de datos mongo...
+[2022-08-30T17:58:15.997] [DEBUG] produccion - Conectado a la base de datos mongo...
