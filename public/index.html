@@ -18,7 +18,7 @@
             c = c.substring(1);
           }
           if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
+            return decodeURIComponent(c.substring(name.length, c.length));
           }
         }
         return "";
@@ -29,18 +29,27 @@
         console.log("no pasa")
         const username = getCookie("username")
         const avatar = getCookie("avatar")
+        const carrito_id = getCookie("carrito_id")
         console.log(username)
         console.log(avatar)
+        console.log(carrito_id)
         if(username != ""){
-          document.getElementById("div_usuario").style.visibility='visible'
+          document.getElementById("div_usuario").style.display='block'
           document.getElementById("username").innerHTML=username
           if(avatar != ""){
-            document.getElementById("avatar_img").style.visibility='visible'
+            document.getElementById("avatar_img").style.display='block'
             document.getElementById("avatar_img").src=avatar
           }
+          if(carrito_id != ""){
+            document.getElementById("carrito").style.display='block'
+            // document.getElementById("carrito_id").href='/api/lista_carrito/'+carrito_id
+          }
+          document.getElementById("login").style.display='none'
         }else{
-          document.getElementById("div_usuario").style.visibility='hidden'
+          document.getElementById("div_usuario").style.display='none'
+          document.getElementById("carrito").style.display='none'
           document.getElementById("username").innerHTML=""
+          document.getElementById("login").style.display='block'
         }
       }
     </script>
@@ -56,34 +65,46 @@
     }
 </style>
 
-<h1>Bienvenidos!</h1>
-
-<div style="visibility: hidden;" id="div_usuario">
+<div style="display: none;" id="div_usuario">
   <h3 style="background-color: rgba(64, 243, 73, 0.527); color: rgb(47, 0, 100);">Bienvenido <span id="username"></span>
-  <img style="visibility: hidden;" id="avatar_img" src="" height="50" width="50">
+  <img style="display: none;" id="avatar_img" src="" height="100" width="100">
   <form action="/upload_avatar" method="post" enctype="multipart/form-data">
       <label for="thumbnail">Avatar:</label>
       <input type="file" id="thumbnail" name="thumbnail" required><br><br>
       <input type="submit" value="Actualizar avatar">
   </form>  
-  <a href="/api/logout">Salir</a></h1>
+  <a href="/logout">Salir</a></h1>
 </div>
 
 <div>
-  <h2 style="color: rgb(8, 32, 24);">Login</h2>
-  <form action="/login" method="post">
-      <label for="username">Email:</label>
-      <input type="email" id="username" name="username"><br><br>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password"><br><br>
-      <input type="submit" value="Acceder">
-  </form>  
+  <div id="login" style="width: 400px;
+  background: #24303c;
+  padding: 30px;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 4px;
+  font-family: 'calibri';
+  color: white;
+  box-shadow: 7px 13px 37px #000;">
+    <h2 style="color: rgb(228, 237, 234);">Login</h2>
+    <form action="/login" method="post">
+        <label for="username">Email:</label>
+        <input type="email" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Acceder">
+        <br><br>
+        <a style="width: 100%; background: #1f53c5; border: none; padding: 12px; color: white; margin: 16px 0; font-size: 16px;" href="register.html">Registrarse</a>
+    </form>  
+  </div>  
   <br>
-  <a href="register.html">Registrarse</a>
   <br>
-  <a href="/api/lista_productos">Ver todos los productos:</a>
   <br>
-  <a href="/api/lista_carrito/62bd51a97b644a600e8bdbbb">Ver carrito:</a>
+  <div id="carrito">
+    <a style="width: 100%; background: #1f53c5; border: none; padding: 12px; color: white; margin: 16px 0; font-size: 16px;" href="/api/lista_productos">Ver todos los productos:</a>
+    <br><br><br>
+    <a style="width: 100%; background: #1f53c5; border: none; padding: 12px; color: white; margin: 16px 0; font-size: 16px;" href="/api/lista_carrito/630ee7c996f5b50c5d40246c">Ver carrito:</a>
+  </div>
 </div>    
 </body>
 </html>

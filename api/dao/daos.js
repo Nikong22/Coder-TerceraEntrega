@@ -5,7 +5,7 @@ require('dotenv').config({ path: appDir + '/.env' })
 let productosDao
 let carritosDao
 
-switch (process.env.PERS) {
+switch ('mongodb') {
     case 'json':
         const CarritosDaoArchivo = require('./carritos/CarritosDaoArchivo.js')
         carritosDao = new CarritosDaoArchivo();

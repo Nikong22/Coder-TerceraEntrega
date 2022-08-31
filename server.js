@@ -1,5 +1,5 @@
 const express = require("express");
-const bCrypt = require('bCrypt');
+const bCrypt = require('bcryptjs');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const {obtenerUsuario, obtenerUsuarioId, passwordValida} = require('./utils/util');
@@ -14,13 +14,14 @@ require('dotenv').config({ path: __dirname + '/.env' })
 const logger = require('./logger');
 const {fork} = require('child_process');
 const cluster = require('cluster');
-var fileupload = require("express-fileupload");
 const fs = require('fs'); 
+var fileupload = require("express-fileupload");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
+
 app.use(fileupload());
-let FORK_O_CLUSTER = 'CLUSTER'
+let FORK_O_CLUSTER = 'FORK'
 
 const numCPUs = require('os').cpus().length
 if(FORK_O_CLUSTER == 'FORK'){
@@ -106,7 +107,7 @@ passport.use('login', new LocalStrategy({
 },
     function (req, username, password, done) {
         User.findOne({ 'username': username },
-            function (err, user) {
+            async function (err, user) {
                 if (err)
                     return done(err);
                 if (!user) {
@@ -160,7 +161,6 @@ passport.use('signup', new LocalStrategy({
                     newUser.direction = req.body.direction;
                     newUser.age = req.body.age;
                     newUser.phone = req.body.phone;
-                    newUser.thumbnail = req.body.thumbnail;
                     newUser.save(function (err) {
                         if (err) {
                             // console.log('Error in Saving user: ' + err);

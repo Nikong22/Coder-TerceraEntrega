@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const logger = require('../logger');
 
-const URI = 'mongodb://localhost:27017/ecommerceCoder';
+const URI = 'mongodb+srv://fercamm:fercamm@cluster0.5f3mw6d.mongodb.net/test';
 
 const optionsDB = mongoose.connect(URI,
   {

@@ -1,3 +1,4 @@
+const { carritosDao } = require('./api/dao/daos.js');
 const logger = require('./logger');
 
 function getLogin(req, res){
@@ -13,9 +14,16 @@ function getLogin(req, res){
     }
 }
 
-function postLogin(req, res){
+async function postLogin(req, res){
     let user = req.user;
     user.visitas++;
+
+    const carrito = await carritosDao.crearCarrito(req)
+    console.log(carrito[0]._id.toString())
+    var carrito_id = carrito[0]._id.toString()
+    console.log(carrito_id)
+    res.cookie('carrito_id', carrito_id);
+
     res.redirect('/datos');
 }
 
@@ -41,6 +49,8 @@ function getLogout(req, res){
         // logger.info('logout1');
         if (err) { return next(err); }
         res.cookie('username', '' );
+        res.cookie('avatar', '' );
+        res.cookie('carrito_id', '' );
         console.log('logout2')
         // logger.info('logout2');
         res.redirect('/');
