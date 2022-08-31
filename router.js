@@ -64,7 +64,8 @@ function getDatos(req,res){
         let user = req.user;
         // console.log(user);
         logger.info(user);
-        res.cookie('', user.username,  { signed: false, maxAge: 5000 } );
+        res.cookie('username', user.username,  { signed: false, maxAge: 5000 } );
+        res.cookie('avatar', 'uploads/' + user.thumbnail,  { signed: false, maxAge: 5000 } );
         /*res.json({
             id: user._id,
             usuario: user.username,

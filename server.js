@@ -14,11 +14,12 @@ require('dotenv').config({ path: __dirname + '/.env' })
 const logger = require('./logger');
 const {fork} = require('child_process');
 const cluster = require('cluster');
+var fileupload = require("express-fileupload");
 const fs = require('fs'); 
 
 const app = express();
-const PORT = process.env.PORT;
-
+const PORT = process.env.PORT || 3000;
+app.use(fileupload());
 let FORK_O_CLUSTER = 'CLUSTER'
 
 const numCPUs = require('os').cpus().length
@@ -89,7 +90,7 @@ app.get('/logout', rutas.getLogout);
 app.get('/ruta-protegida', checkAuthentication, rutas.getRutaProtegida);
 
 app.get('/datos', rutas.getDatos);
-
+app.post('/upload_avatar', uploadAvatar);
 app.get('*', rutas.failRoute);
 
 function checkAuthentication(req, res, next) {
@@ -190,3 +191,28 @@ passport.deserializeUser(function (id, done) {
         done(err, user);
     });
 });
+
+function uploadAvatar(req, res){
+    const username = req.user.username
+    const pathAvatar = './public/uploads/'
+    User.findOne({ 'username': username },
+        function (err, user) {
+            if (err){
+                logger.error(err)
+                throw err;
+            }
+            user.thumbnail = req.files.thumbnail.name;
+            user.save(function (err) {
+                if (err) {
+                    logger.error(err)
+                    throw err;
+                }
+                fs.writeFile(pathAvatar+req.files.thumbnail.name, req.files.thumbnail.data, function (err) {
+                    res.cookie('avatar', 'uploads/' + req.files.thumbnail.name,  { signed: false, maxAge: 5000 } );
+                    res.cookie('username', username,  { signed: false, maxAge: 5000 } );
+                    res.redirect('/');
+                });
+            });
+        }
+    );   
+}
